@@ -1,3 +1,25 @@
+*   Implement support for deprecating associations:
+
+    ```ruby
+    has_many :posts, deprecated: true
+    ```
+
+    With that, Active Record will report any usage of the `posts` association.
+
+    Three reporting modes are supported (`:warn`, `:raise`, and `:notify`), and
+    backtraces can be enabled or disabled. Defaults are `:warn` mode and
+    disabled backtraces.
+
+    Rails applications can override the defaults:
+
+    ```
+    config.active_record.deprecated_associations_options = { mode: :notify, backtrace: true }
+    ```
+
+    Please, check the docs for further details.
+
+    *Xavier Noria*
+
 *   PostgreSQL adapter create DB now supports `locale_provider` and `locale`.
 
     *Bengt-Ove Hollaender*
